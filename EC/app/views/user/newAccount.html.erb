@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= javascript_include_tag 'ajaxzip3/ajaxzip3.js' %>
+<%= javascript_include_tag 'jquery/jquery-3.3.1.min.js' %>
+<%= javascript_include_tag 'newAccount' %>
+<%= stylesheet_link_tag 'newAccount' %>
+<title>ECサイト</title>
+</head>
+<body>
+<div align="center" style="margin-bottom: 100px;">
+    <p class="newAccount_header">ー 会員登録 ー</p>
+    <p class="newAccount_header">以下のフォームに必要事項をご入力ください。</p>
+    <span id="span"></span>
+    <% if @msg.present?%>
+    	<span class="span"><%= @msg %></span>
+    <% end %>
+    <%= form_tag(user_Existence_path, method: :post) do %>
+        <table class="newAccount_table">
+            <tr>
+                <th class="th">お名前<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <input type="text" id="user_name" name="user_name" value="<%= session[:user_name] %>" placeholder="山田太郎" onfocus="this.placeholder=''" onblur="this.placeholder='山田太郎'"><br>
+                </td>
+            </tr>
+            <tr>
+                <th class="th">フリガナ<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <input type="text" id="user_kana_name" name="user_kana_name" value="<%= session[:user_kana_name] %>" placeholder="ヤマダタロウ" onfocus="this.placeholder=''" onblur="this.placeholder='ヤマダタロウ'"><br>
+                </td>
+            </tr>
+            <tr>
+                <th>電話番号<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <% if @tel.present?%>
+                        <input type="text" id="error_tel" name="tel" class="tel" value="<%= session[:tel] %>" placeholder="09012345678" onfocus="this.placeholder=''" onblur="this.placeholder='09012345678'" onInput="checkForm2(this)"><br>
+    					<span class="newAccount_errormsg"><%= @tel %></span><br>
+    				<% else %>
+                        <input type="text" id="tel" name="tel" class="tel" value="<%= session[:tel] %>" placeholder="09012345678" onfocus="this.placeholder=''" onblur="this.placeholder='09012345678'" onInput="checkForm2(this)"><br>
+                    <% end %>
+                    <tt id="tel_note">※ハイフンを除く半角数字</tt><br>
+                </td>
+            </tr>
+            <tr>
+                <th>郵便番号<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <input type="text" name="zip" id="zip" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','pref','addr01');" value="<%= session[:zip] %>" placeholder="1234567" onfocus="this.placeholder=''" onblur="this.placeholder='1234567'" onInput="checkForm2(this)"><br>
+                    <tt id="zip_note">※ハイフンを除く半角数字<br>
+                    ※住所が自動で入力されます。</tt><br>
+                </td>
+            </tr>
+            <tr>
+                <th>都道府県<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td><input type="text" name="pref" id="pref" size="20" value="<%= session[:pref] %>" placeholder="東京都" onfocus="this.placeholder=''" onblur="this.placeholder='東京都'"><br></td>
+            </tr>
+            <tr>
+                <th>市区町村・番地<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <input type="text" name="addr01" id="addr01" size="60" value="<%= session[:addr01] %>" placeholder="渋谷区夕陽町3丁目26番1号" onfocus="this.placeholder=''" onblur="this.placeholder='渋谷区夕陽町3丁目26番1号'"><br>
+                </td>
+            </tr>
+            <tr>
+                <th>建物名・部屋番号<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <input type="text" id="addr02" name="addr02" value="<%= session[:addr02] %>" placeholder="プレミアハイツ204号室" onfocus="this.placeholder=''" onblur="this.placeholder='プレミアハイツ204号室'"><br>
+                </td>
+            </tr>
+            <tr>
+                <th>メールアドレス<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    
+                    <% if @email.present?%>
+                        <input type="email" id="error_email" name="email" class="email" value="<%= session[:email] %>" placeholder="info@example.com" onfocus="this.placeholder=''" onblur="this.placeholder='info@example.com'" onInput="checkForm1(this)">
+    					<span class="newAccount_errormsg"><%= @email %></span><br>
+                    <% else %>
+                        <input type="email" id="email" name="email" class="email" value="<%= session[:email] %>" placeholder="info@example.com" onfocus="this.placeholder=''" onblur="this.placeholder='info@example.com'" onInput="checkForm1(this)"><br>
+    				<% end %>
+                    <tt id="email_note">※＠を含む半角英数字</tt><br>
+                </td>
+            </tr>
+            <tr>
+                <th>パスワード<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <input type="password" id="pass01" name="pass01" placeholder="新しいパスワード" onfocus="this.placeholder=''" onblur="this.placeholder=''" onInput="checkForm3(this)"><br>
+                    <tt id="pass_note">※8~16文字までの半角英数字</tt><br>
+                </td>
+            </tr>
+            <tr>
+                <th>パスワード確認<b>必須</b></th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <% if @pass.present?%>
+                        <input type="password" id="error_pass02" name="pass02" class="pass02" placeholder="パスワードの再入力" onfocus="this.placeholder=''" onblur="this.placeholder='パスワードの再入力'"onInput="checkForm3(this)">
+                        <span class="newAccount_errormsg"><%= @pass %></span><br>
+                    <% else %>
+                        <input type="password" id="pass02" name="pass02" class="pass02" placeholder="パスワードの再入力" onfocus="this.placeholder=''" onblur="this.placeholder='パスワードの再入力'"onInput="checkForm3(this)">
+                    <% end %>
+                </td>
+            </tr>
+        </table>
+        <a href="/user/User" class="newAccount_btn">戻る</a>
+        <button type="submit" class="newAccount_btn" style="width:162px;">確認</button>
+    <% end %>
+</div>
+</body>
+</html>

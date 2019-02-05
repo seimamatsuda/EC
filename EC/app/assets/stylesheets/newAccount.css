@@ -1,0 +1,89 @@
+html{
+	height: 100%;
+}
+.newAccount_header{
+	font-weight: bold;
+	font-size: 15px;
+	width: 100%;
+}
+.span {
+  color: #ff009c;
+  text-align: left;
+  width: 342px;
+  display: block;
+  margin:1em 0;
+  padding:10px 5px 10px 5px;
+  border: solid 1px #ffebef;
+  background: #ffebef;
+  border-radius: 5px;
+  font-size:13px;
+  /*line-height:1.5;*/
+}
+b{
+	color: white;
+  border: solid red;
+  background: red;
+  font-size: 13px;
+	margin-left: 10px;
+}
+.newAccount_table{
+	text-align: left;
+	width: 200px;
+}
+.newAccount_table td {
+  padding: 0;
+}
+.tr{
+	padding-bottom: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 100%;
+}
+input#user_name,#user_kana_name,#tel,#zip,#pref,#addr01,#addr02,#email,#pass01,#pass02,.newaccount_name{
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+	width: 300px;
+	height: 30px;
+	font-size: 15px;
+  border-bottom: solid 2px;
+}
+#error_tel,#error_email,#error_pass02{
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+  width: 300px;
+  height: 30px;
+  font-size: 15px;
+  border-bottom: solid 2px #FF4500;
+}
+
+.newAccount_btn{
+  margin: 30px 15px;
+  width: 140px;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #FFF;
+  background: #343738;
+  border: solid 1px #343738;
+  transition: .3s;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
+.newAccount_btn:hover {
+  background: #696969;
+  border: solid 1px #696969;
+}
+.newAccount_errormsg{
+  color: red;
+  font-size: 14px;
+}

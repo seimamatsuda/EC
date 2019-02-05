@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= stylesheet_link_tag 'cartDone' %>
+<title>ECサイト</title>
+</head>
+<body>
+	<div class="cartDone" style="margin:30px 0;">
+ 		<a href="/photos/index">
+ 			<img src="/assets/logo.png" onerror="this.onerror=null;this.src='/assets/logo.png'">
+ 		</a>
+	</div>
+	<% if @carts.present?%>
+		<p class="cartDone">注文が完了しました。</p>
+		<p class="cartDone">ご購入ありがとうございます。</p>
+	<% else %>
+		<p class="cartDone_2">こちらのご注文内容は既にご注文を頂いている可能性がございます。</p>
+		<p class="cartDone_2">注文履歴をお確かめください。</p>
+	<% end %>	
+	<div align="center">
+ 	<a href="/photos/index" class="cartDone_a">トップに戻る</a>
+ 	</div>
+<%= render 'photos/footer' %>
+</body>
+</html>

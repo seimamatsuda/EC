@@ -1,0 +1,49 @@
+.header_over{
+	text-align: -webkit-center;
+	width: 100%;
+}
+.header_under{
+	text-align: -webkit-center;
+	width: 100%;
+	padding-bottom: 20px;
+	margin-bottom: 50px;
+	border-bottom: 1px solid #808080;
+}
+
+.over{
+	display: table-cell;
+	white-space: nowrap;
+	padding: 10px 0;
+	width: 380px;
+}
+.over a{
+	text-decoration: none;
+	color: #666666;
+	font-weight: bold;
+	font-size: 14px;
+}
+.over input{
+	outline: none;
+}
+.header_under a{
+	display: table-cell;
+	white-space: nowrap;
+	width: 380px;
+	border: 1px solid #808080;
+	text-decoration: none;
+	font-size: 90%;
+	font-weight: 600;
+	color: #444444;
+	padding: 10px 0;
+	outline: none;
+}
+.user_name{
+	color: #808080;
+    text-align: right;
+    font-size: 13px;
+    padding: 0;
+}
+.user_name a{
+	text-decoration: none;
+	color: #808080;
+}

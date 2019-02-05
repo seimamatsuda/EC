@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= javascript_include_tag 'jquery/jquery-3.3.1.min.js' %>
+<%= javascript_include_tag 'cart' %>
+<%= stylesheet_link_tag 'cartConfirm' %>
+<title>ECサイト</title>
+</head>
+<body>
+	<%= render 'photos/header' %>
+	<%= render 'photos/sidemenu' %>
+	<% if @carts.present? %>
+		<%= form_tag(cart_CartDone_path, method: :get) do %>
+			<% @carts.each_with_index do |cart, i| %>
+			<table>
+				<div class="cart_conf">
+					<% if cart.image.present?%>
+					<img src="/assets/<%= cart.image %>" class="cartCon_itemImg" onerror="this.onerror=null;this.src='/assets/noimage.png'">
+					<% end %>
+					<div class="cart_conf_p">
+						<p class="list_conf"><%= cart.brand_name %></p>
+						<p class="list_conf"><%= cart.item_name %></p>
+						<p class="list_conf">size M</p>
+						<p class="list_conf">¥<%= cart.price %>-</p>
+						<%= hidden_field_tag 'cart[price]'+"#{i}", '',:value => cart.price %>
+						<p class="list_conf">数量 <%= text_field_tag 'cart[number]'+"#{i}", '', :class => 'number_conf', :readonly => true, :value => cart.number %>
+						</p>
+						<p class="list_conf">
+						小計
+						<%= text_field_tag 'cart[subtotal]'+"#{i}", '', :class => 'subtotal_conf', :readonly => true %>
+						<%= hidden_field_tag 'id', '',:value => "#{i}" %>
+						</p>
+					</div>
+				</div>
+			</table>
+		<% end %>
+			<div class="total_price_conf"><div class="total_price2_conf">合計金額　
+				<%= text_field_tag 'total', '',:Value => '¥0-', :class => 'total_conf', :readonly => true%></div>
+			</div>
+			<div class="cart_conf_button">※この内容でお間違いなければ[注文する]ボタンを押してください。</div>
+			<div class="cart_conf_button"><%= button_to "注文する"%></div>
+	<% end %>
+	<% else %>
+		<p class="cartConfirm">こちらのご注文内容は既にご注文を頂いている可能性がございます。</p>
+		<p class="cartConfirm">注文履歴をお確かめください。</p>
+		<div align="center">
+	 		<a href="/photos/index" class="cartConfirm_a">トップに戻る</a>
+	 	</div>
+	<% end %>
+<%= render 'photos/footer' %>
+</body>
+</html>

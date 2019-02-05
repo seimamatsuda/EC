@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= stylesheet_link_tag 'header' %>
+<title>ECサイト</title>
+</head>
+<body>
+<form method="get" action="/cart/Cart">
+ <!-- ログインしていた場合 -->
+ <% if session[:user] %>
+	<div class="user_name">
+		ようこそ
+		<a href="/user/Logout"><%= session[:user] %> 様</a>
+	</div>
+ <% end %>
+ <div class="header_over">
+ 	<div class="over">
+ 		<%= image_submit_tag("cart.png") %>
+	</div>
+	<div class="over">
+		<!-- ログインしていた場合 -->
+		<% if session[:user] %>
+			<a href="/photos/index">
+		<% else %>
+			<a href="/user/Logout">
+		<% end %>
+ 		<img src="/assets/logo.png" onerror="this.onerror=null;this.src='/assets/logo.png'">
+ 		</a>
+	</div>
+	<div class="over">
+		<!-- ログインしていた場合 -->
+		<% if !session[:user] %>
+			<a href="/user/User">LOG&ensp;IN</a>
+		<% else %>
+			<a href="/user/Logout">LOG&ensp;OUT</a>
+		<% end %>
+	</div>
+ </div>
+ <div class="header_under">
+ 	<%= link_to photos_Category_path  :para => 'BRAND' do %>
+ 		<div>BRAND</div>
+ 	<% end %>
+ 	<%= link_to photos_ItemList_path do %>
+		<div>ALL&ensp;ITEM</div>
+	<% end %>
+	<%= link_to photos_Category_path  :para => 'ITEMCATEGORY' do %>
+		<div>ITEMCATEGORY</div>
+	<% end %> 
+ </div>
+</form> 
+</body>
+</html>

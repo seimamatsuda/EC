@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= stylesheet_link_tag 'notfound' %>
+<title>ECサイト</title>
+</head>
+<body>
+	<div class="notfound"><%= image_tag("notfound.png") %></div>
+	<span class="mesg">
+		このページは3秒後にトップページに移動します。<br>
+		※切り替わらない場合は、<a href="/photos/index" class="click">こちら</a>をクリックしてください。
+	</span>
+
+	<script>
+		setTimeout(function(){
+		window.location.href = 'http://localhost:3000/photos/index';
+		}, 3*1000);
+	</script>
+</body>
+</html>

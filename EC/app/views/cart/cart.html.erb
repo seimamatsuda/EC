@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= javascript_include_tag 'jquery/jquery-3.3.1.min.js' %>
+<%= javascript_include_tag 'cart' %>
+<%= stylesheet_link_tag 'cart' %>
+<title>ECサイト</title>
+</head>
+<body>
+	<%= render 'photos/header' %>
+	<%= render 'photos/sidemenu' %>
+	<% @carts.each_with_index do |cart, i| %>
+		<div class="cart">
+			<div style="width: 90%;">
+				<div class="cart_delete">
+					<%= button_to "削除", :action => "DeleteCart", :id => cart.item_cd %>
+				</div>
+				<% if cart.image.present? %>
+					<img src="/assets/<%= cart.image %>" class="cart_itemImg" onerror="this.onerror=null;this.src='/assets/noimage.png'">
+				<% end %>
+				<table class="cart_table">
+					<tr>
+						<td><p><%= cart.brand_name %></p></td>
+					</tr>
+					<tr>
+						<td><p><%= cart.item_name %></p></td>
+					</tr>
+				</table>	
+				<p class="list">size M</p>
+				<p class="list">¥<%= cart.price %>-</p>
+				<%= hidden_field_tag 'cart[price]'+"#{i}", '',:value => cart.price %>
+				<%= form_tag(cart_ChangeNumber_path, method: :get) do %>
+					<p class="list">数量 
+						<%= select_tag 'cart[number]'+"#{i}", 
+						options_for_select([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], 
+						["6","6"], ["7","7"], ["8","8"], ["9","9"], ["10","10"]], 
+						:selected => cart.number), :onchange => 'Calc()' %>
+					</p>
+					<%= hidden_field_tag 'cart[item_cd]', '',:value => cart.item_cd %>
+					<%= hidden_field_tag 'id', '',:value => "#{i}" %>
+					<div class="list"><%= button_to "数量更新", :id => cart.item_cd %></div>
+				</div>
+			<div class="subtotal_price">
+				小計
+				<%= text_field_tag 'cart[subtotal]'+"#{i}", '', :class => 'subtotal', :readonly => true %>
+			</div>
+			<% end %>
+		</div>
+	<% end %>
+	<% if @carts.present? %>
+		<div class="total_price"><div class="total_price2">合計金額
+			<%= text_field_tag 'total', '',:Value => '¥0-', :class => 'total', :readonly => true%></div>
+		</div>
+		<form method="get" action="/cart/CartConfirm">
+		<div class="cart_nextButton"><input type="submit" class="cartNext" value="注文内容確認"></div>
+		</form>
+	<% else %>
+		<div class="cart_nextButton">カートに商品がありません。</div>
+		<div class="cart_nextButton"><a href="/photos/ItemList" class="cartNext">商品一覧へ</a></div>
+	<% end %>
+<%= render 'photos/footer' %>
+</body>
+</html>

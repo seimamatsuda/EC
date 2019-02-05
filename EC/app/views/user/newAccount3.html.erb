@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= stylesheet_link_tag 'newAccount3' %>
+<title>ECサイト</title>
+</head>
+<body>
+<%= form_tag(user_User_path, method: :get) do %>
+<div align="center" class="newAccount3">
+	<% if @msg.present?%>
+		<p class="newAccount_errormsg"><%= @msg %></p>
+	<% else %>
+	    <p class="newAccount3_header">ー 会員登録完了 ー</p>
+	    <p>登録が完了しました。<br>ご登録ありがとうございます。</p>
+    <% end %>
+    <button type="submit" class="newAccount3_btn">ログイン画面へ</button>
+</div>
+<% end %>
+</body>
+</html>

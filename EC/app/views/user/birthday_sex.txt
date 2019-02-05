@@ -1,0 +1,42 @@
+<!--                 <tr>
+                <th>
+                    生年月日<b>必須</b>
+                </th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <select name="year">
+                    	<option value="">--</option>
+                    	<% for i in 1970..@date do %>
+                        	<option value="#{i}"><%= "#{i}" %></option>
+                    	<% end %>    
+                    </select> 年
+                    <select name="month">
+                        <option value="">--</option>
+                        <% for i in 1..12 do %>
+                        	<option value="#{i}"><%= "#{i}" %></option>
+                    	<% end %>   
+                         </select> 月
+                    <select name="day">
+                        <option value="">--</option>
+                        <% for i in 1..31 do %>
+                        	<option value="#{i}"><%= "#{i}" %></option>
+                    	<% end %> 
+                        </select> 日
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    性別<b>必須</b>
+                </th>
+            </tr>
+            <tr class="tr">
+                <td>
+                    <label style="position:unset;">
+                    	<input type="radio" id="sex" name="sex" class="validate[required]" value="男性">男性
+                    </label>
+                    <label style="position:unset;">
+                    	<input type="radio" id="sex" name="sex" class="validate[required]" value="女性">女性
+                    </label>
+                </td>
+            </tr> -->

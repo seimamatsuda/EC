@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= stylesheet_link_tag 'newAccount2' %>
+<title>ECサイト</title>
+</head>
+<body>
+<%= form_tag(user_NewAccount3_path, method: :get) do %>
+<div align="center" style="margin-bottom: 100px;">
+    <p class="newAccount2_header">ー 会員登録確認 ー</p>
+        <table class="newAccount2_table">
+            <tr>
+                <th>
+                    <br>
+                    お名前
+                </th>
+                <td>
+                    <tt><%= session[:user_kana_name] %></tt><br><%= session[:user_name] %>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    電話番号
+                </th>
+                <td>
+                    <%= session[:tel] %>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    住所
+                </th>
+                <td>
+                    <tt>〒<%= session[:zip] %></tt><br><%= session[:pref] %><%= session[:addr01] %><br><%= session[:addr02] %>
+                </td>
+            </tr>
+
+                <th>
+                    メールアドレス
+                </th>
+                <td>
+                    <%= session[:email] %>
+                </td>
+            </tr>
+<!--             <tr>
+                <th>
+                    パスワード
+                </th>
+                <td>
+                    <%= session[:pass01] %>
+                </td>
+            </tr> -->
+        </table>
+        <button type="button" class="newAccount2_btn"onclick="history.back();">戻る</button>
+        <button type="submit" class="newAccount2_btn">確認</button>
+</div>
+<% end %>
+</body>
+</html>

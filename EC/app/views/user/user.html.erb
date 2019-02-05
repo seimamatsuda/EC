@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= javascript_include_tag 'jquery/jquery-3.3.1.min.js' %>
+<%= javascript_include_tag 'newAccount' %>
+<%= stylesheet_link_tag 'user' %>
+<title>ログイン</title>
+</head>
+<body>
+	<div align="center" style="margin:20px">
+ 		<a href="/photos/index">
+            <img src="/assets/logo.png" onerror="this.onerror=null;this.src='/assets/logo.png'">
+        </a>
+	</div>
+   <p class="user_header">ログイン</p>
+   <div class="box">
+   <%= form_tag(user_Login_path, method: :post) do %>
+   <span id="span" align="center"></span>
+   <table class="login" align="center" style="margin-top:20px;">
+        <tr>
+            <th>
+                メールアドレス&nbsp;：
+            </th>
+            <td>
+                <input type="email" name="email" class="email" placeholder="info@example.com" onInput="checkForm1(this)">
+            </td>
+        </tr>
+        <tr>
+            <th>
+                &nbsp;&ensp;パスワード&nbsp;&ensp;&ensp;：
+            </th>
+            <td>
+                <input type="password" name="password" id="pass01" placeholder="半角英数字8~16文字" onInput="checkForm3(this)">
+            </td>
+        </tr>
+        </table>
+        <% if @login_error.present?%>
+        <p class="user_errormsg"><%= @login_error %></p>
+        <% end %>
+        <table class="login" align="center">
+        <tr>
+            <td>
+                <button type="submit" class="nextButton" value="ログイン" style="padding:3px 20px;">ログイン</button>
+            </td>
+       </tr>
+    </table>
+    <% end %>
+	</div>
+    <p class="user_header">初めてご利用の方はこちら</p>
+    <div class="box" align="center">
+    <a href="/user/NewAccount" class="nextButton">新規登録はこちら</a>
+    <p style="margin:0;">ご登録されるとお届け先のご入力が省略できます。</p>
+	</div>
+</body>
+</html>

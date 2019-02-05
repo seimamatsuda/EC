@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= stylesheet_link_tag 'top' %>
+<title>ECサイト</title>
+</head>
+<body>
+	 <%= render 'photos/header' %>
+	 <%= render 'photos/sidemenu' %>
+<form method="get" action="/photos/ItemList">
+	<!-- <div class="slide_photos"> -->
+	<div id="css-slider">
+	<div class="slider-wrapper">
+		<div class="slide-item">
+			<%= image_tag("noimage.png", :alt => "アイコン") %>
+		</div>
+		<div class="slide-item">
+			<%= image_tag("noimage.png", :alt => "アイコン") %>
+		</div>
+		<div class="slide-item">
+			<%= image_tag("noimage.png", :alt => "アイコン") %>
+		</div>
+	</div>
+	</div>
+	<!-- </div> -->
+	<div class="new_items">
+		<p>NEW&ensp;ITEM</p>
+		<% @newItems.each do |items| %>
+			<button>
+				<%= link_to item_ItemDetail_path :para => items.item_cd do %>
+				<div class="new_item">
+					<% if items.image.present?%>
+					<p align="center"><img src="/assets/<%= items.image %>" class="top_itemImg" onerror="this.onerror=null;this.src='/assets/noimage.png'"></p>
+					<% end %>
+					<div class="top_text">ブランド:&ensp;<span><%= items.brand_name %></span></div>
+					<div class="top_text">商品名:&ensp;&nbsp;&nbsp;&nbsp;<span><%= items.item_name %></span></div>
+					<div class="top_text">単価:&emsp;&ensp;&ensp;&nbsp;<span>¥<%= items.price %>-</span></div>
+				</div>
+				<% end %> 
+			</button>
+		<% end %>
+	</div>
+		<div class="ranking_items">
+		<p>ITEM&ensp;RANKING</p>
+		<% if @ranking.present?%>
+			<% @ranking.each_with_index do |items, i| %>
+				<button>
+					<span style="font:bold larger small;"><%= i + 1 %>位</span>
+					<%= link_to item_ItemDetail_path :para => items.item_cd do %>
+					<div class="ranking_item">
+						<% if items.image.present?%>
+						<p align="center"><img src="/assets/<%= items.image %>" class="top_itemImg" onerror="this.onerror=null;this.src='/assets/noimage.png'"></p>
+						<% end %>
+						<div class="top_text">ブランド:&ensp;<span><%= items.brand_name %></span></div>
+						<div class="top_text">商品名:&ensp;&nbsp;&nbsp;&nbsp;<span><%= items.item_name %></span></div>
+						<div class="top_text">単価:&emsp;&ensp;&ensp;&nbsp;<span>¥<%= items.price %>-</span></div>
+					</div>
+					<% end %>
+				</button>
+			<% end %>
+		<% else %>
+			<div class="noMessage">ー NO&ensp;ITEM&ensp;RANKING ー</div>
+		<% end %>
+	</div>
+</form>
+<%= render 'photos/footer' %>
+</body>
+</html>

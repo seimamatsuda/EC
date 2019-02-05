@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= stylesheet_link_tag '' %>
+<title>ECサイト</title>
+</head>
+<body>
+<% if @categories.present?%>
+	<%= render 'photos/header' %>
+	<%= render 'photos/sidemenu' %>
+
+	<% @categories.each_with_index do |categories, i| %>
+		<% if @category%>
+			<%= link_to photos_ItemListSearch_path :category_para => categories.category_cd do %>
+			<p><%= categories.category_name %></p>
+			<% end %>
+		<% elsif @brand %>
+			<%= link_to photos_ItemListSearch_path :brand_para => categories.brand_cd do %>
+			<p><%= categories.brand_name %></p>
+			<% end %>
+		<% end %>
+	<% end %> 
+
+	<%= render 'photos/footer' %>
+<% else %>
+	<%= render 'photos/notfound' %>
+<% end %>
+</body>
+</html>

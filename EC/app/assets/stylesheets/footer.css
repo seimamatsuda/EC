@@ -1,0 +1,25 @@
+.footer {
+    /*width: 100%;*/
+    margin-top: 90px
+}
+.footer ul{
+	width: 20%;
+	padding-left: 5%;
+	list-style: none;
+	float: left;
+}
+.footer ul li{
+	margin-bottom: 20px;
+	/*display: ;*/
+	/*width: 60%;*/
+}
+.main_li{
+	color: #808080;
+	border-bottom: solid 1px #000000;
+	margin-bottom: 10px;
+}
+
+ul li:nth-child(n+2){
+	/*text-align: center;*/
+	/*height: 30px;*/
+}

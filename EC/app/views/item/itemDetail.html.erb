@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<%= stylesheet_link_tag 'itemdetail' %>
+<title>ECサイト</title>
+</head>
+<body>
+<% if @itemdetails.present?%>
+	<%= render 'photos/header' %>
+	<%= render 'photos/sidemenu' %>
+	<%= form_tag(cart_Cart_path, method: :get) do %>
+		<div class="item_detail">	
+		<% @itemdetails.each do |item| %>
+			<div class="item_image">
+			<% if item.image.present?%>
+			<p><img src="/assets/<%= item.image %>" class="itemDetail_itemImg" width="60" height="60" onerror="this.onerror=null;this.src='/assets/noimage.png'"></p>
+			<% end %>
+			</div>
+			<table class="itemdetail_table">
+				<tr>
+					<td>
+						<p><%= item.brand_name %></p>
+						<%= hidden_field :cart, :id, :value => item.item_cd %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p><%= item.item_name %></p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>¥<%= item.price %>-</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>size</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>数量
+						<%= select_tag 'cart[number]', options_for_select([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"], ["8","8"], ["9","9"], ["10","10"]]) %>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<button type="submit" class="cartPut">カートに入れる</button>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p><%= item.item_describe %></p>
+					</td>
+				</tr>
+			</table>
+		<% end %> 
+		</div>
+	<% end %>
+	<%= render 'photos/footer' %>
+<% else %>
+	<%= render 'photos/notfound' %>
+<% end %>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_cd: MyString
+  size: MyString
+  number: 1
+  total_price: 1
+
+two:
+  item_cd: MyString
+  size: MyString
+  number: 1
+  total_price: 1

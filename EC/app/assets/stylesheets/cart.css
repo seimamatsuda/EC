@@ -1,0 +1,171 @@
+html{
+	height: 100%;
+}
+
+/*
+cart
+*/
+.cart{
+	padding-left: 5%;
+    width: 90%;
+	text-align: right;
+	margin-top: 20px;
+}
+.cart_itemImg {
+	width: 70px;
+	height: 70px;
+	float: left;
+	border: solid 1px #D3D3D3;
+}
+.cart_table{
+	padding: 0 0 0 20px;
+	width: 50%;
+}
+
+.cart_table p{
+	white-space: nowrap;
+	margin: 0;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: left;
+}
+.cart_delete{
+	float: left;
+	margin-right: 20px;
+	margin-top: 18px;
+}
+.list{
+	display: table-cell;
+	padding-left: 22px;
+	white-space: nowrap;
+	font-size: 13px;
+	font-family: serif;
+}
+.cart form{
+    display: table-cell;
+}
+.cart_nextButton{
+	margin-top: 30px;
+	text-align: center;
+}
+
+.subtotal_price{
+    display: inline-block;
+    border-bottom: solid 1px #808080;
+    font-size: 13px;
+    margin-right: 10%;
+}
+.total_price{
+	border-top: solid 1px #808080;
+    text-align: right;
+    margin-top: 20px;
+	padding-right: 30px;
+}
+.total_price2{
+	display: inline-block;
+    border-bottom: solid 1px #808080;
+	margin-top: 30px;
+	margin-right: 8.5%;
+}
+/* 小計 */
+.subtotal {
+  border: none;
+  cursor: default;
+  text-align: center;
+  font-size: 13px;
+  width:110px;
+  outline: none;
+}
+.total {
+  border: none;
+  cursor: default;
+  text-align: center;
+  font-size: 13px;
+  width:110px;
+  outline: none;
+}
+
+/* ボタンデザイン */
+/*注文内容確認*/
+/*商品一覧へ*/
+.cartNext{
+	display: inline-block;
+	padding: 5px 70px;
+	border-radius: 3px;
+	text-decoration: none;
+	color: #FFF;
+	background: #343738;
+	border: solid 1px #343738;
+	transition: .3s;
+	font-size: 13px;
+	font-weight: bold;
+	cursor: pointer;
+	white-space: nowrap;
+	outline: none;
+}
+.cartNext:hover {
+  background: #696969;
+  border: solid 1px #696969;
+}
+/*数量更新*/
+.list > input[type="submit"]{
+	display: inline-block;
+	padding: 3px 20px;
+	border-radius: 3px;
+	text-decoration: none;
+	color: #FFF;
+	background: #A9A9A9;
+	border: solid 1px #A9A9A9;
+	transition: .3s;
+	font-size: 12px;
+	cursor: pointer;
+	white-space: nowrap;
+	outline: none;
+}
+.list > input[type="submit"]:hover {
+  background: #C0C0C0;
+  border: solid 1px #C0C0C0;
+}
+/*削除*/
+.cart_delete input[type="submit"]{
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 3px;
+	text-decoration: none;
+	color: #343738;
+	background: #FFF;
+	border: solid 1px #343738;
+	transition: .3s;
+	font-size: 12px;
+	cursor: pointer;
+	white-space: nowrap;
+	outline: none;
+}
+.cart_delete input[type="submit"]:hover {
+  background: #343738;
+  color: #FFF;
+}
+@media screen and (min-width: 600px) and ( max-width: 1000px) {
+.subtotal_price{
+    margin-right: 5%;
+}
+.total_price2{
+	margin-right: 3%;
+}
+}
+@media screen and (max-width: 600px) {
+	.cart{
+    width: 90%;
+	text-align: right;
+	margin-top: 20px;
+}
+.subtotal_price{
+    margin-right: 0%;
+}
+.total_price2{
+	margin-right: 0%;
+}
+.total_price{
+	padding-left: 12%;
+    text-align: center;
+}
